@@ -5,6 +5,7 @@ import (
 	"os"
 
 	"github.com/gofiber/fiber/v2"
+	"github.com/gofiber/fiber/v2/middleware/cors"
 	"github.com/joho/godotenv"
 	"github.com/sixfwa/fiber-api/database"
 	"github.com/sixfwa/fiber-api/middlewares"
@@ -51,6 +52,11 @@ func setupRoutes(app *fiber.App) {
 func main() {
 	database.ConnectDb()
 	app := fiber.New()
+
+	app.Use(cors.New(cors.Config{
+		AllowOrigins: "*",
+		AllowHeaders: "Origin, Content-Type, Accept",
+	}))
 
 	setupRoutes(app)
 
