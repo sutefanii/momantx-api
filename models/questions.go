@@ -15,6 +15,7 @@ type Question struct {
 	Answers       datatypes.JSON `json:"answers"`
 	QuestionTitle string         `json:"title_question"`
 	ItemRefer     int            `json:"item_id"`
+	AnswerInfoText string
 	Item          Item           `gorm:"foreignKey:ItemRefer"`
 }
 
